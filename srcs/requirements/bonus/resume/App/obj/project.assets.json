@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/aazzaoui/Desktop/42cursus/Inception/srcs/requirements/bonus/resume/App/cv.csproj",
+      "projectUniqueName": "/home/aazzaoui/Desktop/42cursus/repo_inception/srcs/requirements/bonus/resume/App/cv.csproj",
       "projectName": "cv",
-      "projectPath": "/home/aazzaoui/Desktop/42cursus/Inception/srcs/requirements/bonus/resume/App/cv.csproj",
+      "projectPath": "/home/aazzaoui/Desktop/42cursus/repo_inception/srcs/requirements/bonus/resume/App/cv.csproj",
       "packagesPath": "/home/aazzaoui/.nuget/packages/",
-      "outputPath": "/home/aazzaoui/Desktop/42cursus/Inception/srcs/requirements/bonus/resume/App/obj/",
+      "outputPath": "/home/aazzaoui/Desktop/42cursus/repo_inception/srcs/requirements/bonus/resume/App/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/aazzaoui/.nuget/NuGet/NuGet.Config"
