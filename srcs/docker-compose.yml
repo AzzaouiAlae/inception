@@ -1,0 +1,203 @@
+services:
+  nginx:
+    build: ./requirements/nginx
+    image: nginx:Inception
+    container_name: nginx
+    restart: on-failure
+    init: true
+    secrets:
+      - nginx_crt
+      - nginx_key
+    depends_on:
+      - wordpress
+      - resume
+      - grafana
+      - adminer
+    ports:
+      - "${NGINX_PORT}:${NGINX_PORT}"
+    volumes:
+      - wordpress_data:/var/www/
+    networks:
+      - inception_network
+    env_file:
+      - .env
+
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb:Inception
+    init: true
+    container_name: mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    secrets:
+      - db_password
+      - db_root_password
+    networks:
+      - inception_network
+    restart: on-failure
+    env_file:
+      - .env
+
+  wordpress:
+    depends_on:
+      - mariadb
+      - redis
+    build: ./requirements/wordpress
+    image: wordpress:Inception
+    init: true
+    container_name: wordpress
+    volumes:
+      - wordpress_data:/var/www/
+    secrets:
+      - db_password
+      - salts
+      - wp_user_password
+      - wp_admin_password
+    networks:
+      - inception_network
+    restart: on-failure
+    env_file:
+      - .env
+
+  resume:
+    build: ./requirements/bonus/resume
+    image: resume:Inception
+    container_name: resume
+    restart: on-failure
+    init: true
+    networks:
+      - inception_network
+
+  redis:
+    build: ./requirements/bonus/redis
+    image: redis:Inception
+    container_name: redis
+    restart: on-failure
+    init: true
+    networks:
+      - inception_network
+    env_file:
+      - .env
+
+  ftp:
+    build: ./requirements/bonus/FTP
+    image: ftp:Inception
+    container_name: ftp
+    restart: on-failure
+    init: true
+    networks:
+      - inception_network
+    env_file:
+      - .env
+    ports:
+      - "${FTP_PORT}:${FTP_PORT}"
+      - "${pasv_min_port}-${pasv_max_port}:${pasv_min_port}-${pasv_max_port}"
+    volumes:
+      - wordpress_data:/var/www/
+    secrets:
+      - ftp_password
+
+  cadvisor:
+    build: ./requirements/bonus/cadvisor
+    image: cadvisor:Inception
+    container_name: cadvisor
+    restart: on-failure
+    init: true
+    privileged: true
+    networks:
+      - inception_network
+    env_file:
+      - .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /run/containerd/containerd.sock:/run/containerd/containerd.sock:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /:/rootfs:ro
+
+  prometheus:
+    depends_on:
+      - cadvisor
+    build: ./requirements/bonus/prometheus
+    image: prometheus:Inception
+    container_name: prometheus
+    restart: on-failure
+    init: true
+    volumes:
+      - prometheus_data:/var/lib/prometheus
+    networks:
+      - inception_network
+    env_file:
+      - .env
+
+  grafana:
+    build: ./requirements/bonus/grafana
+    image: grafana:Inception
+    container_name: grafana
+    restart: on-failure
+    init: true
+    networks:
+      - inception_network
+    env_file:
+      - .env
+    secrets:
+      - grafana_password
+    depends_on:
+      - prometheus
+
+  adminer:
+    depends_on:
+      - mariadb
+    build: ./requirements/bonus/Adminer
+    image: adminer:Inception
+    container_name: adminer
+    restart: on-failure
+    init: true
+    networks:
+      - inception_network
+    env_file:
+      - .env
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+  nginx_crt:
+    file: ./secrets/nginx.crt
+  nginx_key:
+    file: ./secrets/nginx.key
+  salts:
+    file: ./secrets/salts.txt
+  wp_user_password:
+    file: ./secrets/wp_user_password.txt
+  wp_admin_password:
+    file: ./secrets/wp_admin_password.txt
+  ftp_password:
+    file: ./secrets/ftp_password.txt
+  grafana_password:
+    file: ./secrets/grafana_password.txt
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/data/mariadb
+      o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/data/wordpress
+      o: bind
+  prometheus_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/data/prometheus
+      o: bind
+
+networks:
+  inception_network:
+    name: inception_network

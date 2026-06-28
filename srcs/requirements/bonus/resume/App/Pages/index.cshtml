@@ -1,0 +1,169 @@
+@page
+@using System.Runtime.InteropServices.Marshalling
+@model  CV.Pages.IndexModel
+@{
+
+}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="/resume/" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Resume</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<div class="name">Alaeeddine azzaoui</div>
+			<div class="job-title">Software Developer</div>
+			<div class="address">Annaser, Benguerir, Morocco</div>
+			<div class="contact">
+				<div class="phone">
+					<a href="tel:+212622437387">+212622437387</a>
+				</div>
+				<div class="email">
+					<a href="email:azzaoui@outlook.com">azzaoui@outlook.com</a>
+				</div>
+				<div class="linkedin">
+					<a href="https://www.linkedin.com/in/azzaoui-alae-4a4553265/">linkedin.com/in/azzaoui-alae-4a4553265</a>
+				</div>
+				<div class="github">
+					<a href="https://github.com/azzaouialae">github.com/azzaouialae</a>
+				</div>
+			</div>
+		</header>
+		<hr />
+		<section class="skills">
+			<h2>SKILLS</h2>
+			<div class="content">
+				<div>C | C++ | C# | HTML | CSS</div>
+				<div>Windows forms | .NET MAUI</div>
+				<div>SQL server | SQLite | ADO.NET</div>
+				<div>Git | Bash | Docker</div>
+			</div>
+		</section>
+		<section class="project">
+			<h2>PROJECTS</h2>
+			<div class="content">
+				<h3>
+					<div class="title">Minishell</div>
+					<div class="time">May 2025</div>
+				</h3>
+				<div class="text">
+					<span>
+						A Unix-like shell implemented in C with custom data structures and a custom memory-management system. Supports parsing, built-ins, environment expansion, pipes, redirections, and here-docs.
+					</span>
+					
+					<a href="https://github.com/AzzaouiAlae/mini_shell"
+						>github.com/AzzaouiAlae/mini_shell</a
+					>
+				</div>
+			</div>
+			<div class="content">
+				<h3>
+					<div class="title">Driver Licenses Management System</div>
+					<div class="time">November 2023 - February 2024</div>
+				</h3>
+				<div class="text">
+					<span>
+						C# WinForms + SQL Server application following a structured 3-tier architecture (UI / Business Logic / Data Access). Supports full CRUD operations and driver record management.
+					</span>
+					<a
+						href="https://github.com/AzzaouiAlae/19-FullRealProject/"
+					>
+						github.com/AzzaouiAlae/19-FullRealProject/
+					</a>
+				</div>
+			</div>
+			<div class="content">
+				<h3>
+					<div class="title">Expen</div>
+					<div class="time">May 2024 - July 2024</div>
+				</h3>
+				<div class="text">
+					<span>
+						Cross-platform personal finance app built with .NET MAUI. Tracks expenses, income, and budgets with a clean and simple UI.
+					</span>
+					<a href="https://github.com/AzzaouiAlae/Expen">
+						github.com/AzzaouiAlae/Expen
+					</a>
+				</div>
+			</div>
+			<div class="content">
+				<h3>
+					<div class="title">MyNote</div>
+					<div class="time">June 2024</div>
+				</h3>
+				<div class="text">
+					<span>
+						Lightweight note-taking mobile app built with .NET MAUI for creating and organizing personal notes efficiently.
+					</span>
+					<a href="https://github.com/AzzaouiAlae/MyNote">
+						github.com/AzzaouiAlae/MyNote
+					</a>
+				</div>
+			</div>
+			<div class="content">
+				<h3>
+					<div class="title">Omnifood (HTML, CSS)</div>
+					<div class="time">October 2025</div>
+				</h3>
+				<div class="text">
+					<span>
+						A fully responsive landing page built using modern HTML/CSS techniques, featuring clean design, layout structuring, and mobile-first responsiveness.
+					</span>
+					<a href="https://azzaouialae.github.io/Omnifood/">
+						azzaouialae.github.io/Omnifood/
+					</a>
+				</div>
+			</div>
+		</section>
+		<section class="education">
+			<h2 class="heading">EDUCATION</h2>
+			<div class="content">
+				<h3>
+					<div class="title">Programming Advices</div>
+					<div class="time">April 2022 - Present</div>
+				</h3>
+				<div class="text">
+					Completed a 24-level programming roadmap covering C++, C#,
+					algorithms, data structures, OOP, SQL, and software
+					development fundamentals. Developed multiple structured
+					projects focusing on clean code, problem-solving, debugging,
+					database connectivity, Windows services, and building
+					real-world applications.
+				</div>
+			</div>
+			<div class="content">
+				<h3>
+					<div class="title">1337 (42 Network)</div>
+					<div class="time">November 2024 - Present</div>
+				</h3>
+				<div class="text">
+					Intensive, project-driven software engineering program
+					emphasizing low-level programming (C), algorithms, UNIX
+					systems, shell scripting, version control, and collaborative
+					development through peer evaluation and teamwork.
+				</div>
+			</div>
+		</section>
+		<section class="Courses">
+			<h2 class="heading">Courses & Certifications</h2>
+			<ul>
+				<li>
+					Linux Administration — Udemy
+				</li>
+				<li>
+					Build Responsive Real-World Websites with HTML & CSS — Udemy
+				</li>
+			</ul>
+		</section>
+	</body>
+</html>

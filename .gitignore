@@ -1,0 +1,8 @@
+srcs/secrets/
+mkcert
+commands.txt
+*.swp
+.DS_Store
+subject.txt
+subject2.txt
+agent.md

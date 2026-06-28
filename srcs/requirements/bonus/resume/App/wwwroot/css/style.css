@@ -1,0 +1,121 @@
+:root {
+	--width: 700px;
+	--size: calc(var(--width) / 210);
+	--height: calc(var(--size) * 297);
+	--margin-top: 19px;
+	--little-margin: 2px;
+}
+
+hr {
+	border: 1px solid gray;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	background-color: #eee;
+	padding: 20px 0;
+}
+
+body {
+	background-color: #fff;
+	width: var(--width);
+	margin: 0 auto;
+	padding: 0 15px;
+	font-family: "Inter", sans-serif;
+	line-height: 1.7;
+	padding-bottom: 50px;
+	color: #222;
+}
+
+header {
+	text-align: center;
+	line-height: 1.7;
+}
+header .name {
+	font-size: 30px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+header .job-title {
+	font-weight: 600;
+}
+header .contact {
+	display: grid;
+	justify-content: space-between;
+	grid-template-columns: auto auto;
+	text-align: start;
+	line-height: 1.4;
+}
+header .contact a {
+	color: black;
+	text-decoration: none;
+	display: block;
+}
+.github, .linkedin {
+	padding-bottom: var(--little-margin);
+}
+section h2 {
+	text-align: center;
+	margin-top: var(--margin-top);
+	background-color: #eee;
+	padding-bottom: 10px;
+	text-decoration: underline;
+	font-weight: 500;
+	font-size: 22px;
+}
+section .text {
+	font-size: 14px;
+	width: 80%;
+	margin-top: var(--little-margin);
+	margin-left: 15px;
+}
+
+section .content {
+	margin-top: var(--margin-top);
+}
+section h3 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+section h3 .time {
+	font-size: 13px;
+}
+
+ul {
+	padding-left: 20px;
+	margin: 15px 0;
+}
+ul li {
+	margin-top: var(--little-margin);
+}
+a {
+	display: block;
+	margin-top: var(--little-margin);
+}
+span {
+	display: block;
+}
+.skills .content {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	margin-top: var(--margin-top);
+}
+@media print {
+	@page {
+		size: A4 portrait;
+	}
+	.education {
+		break-before: region;
+		margin-top: 140px;
+	}
+	html {
+		padding: 0;
+		background-color: #fff;
+	}
+}
